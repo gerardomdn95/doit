@@ -1,9 +1,12 @@
 import React from 'react';
+import { MainLandingSection } from '../../components/MainLandingSection';
+import { Footer } from '../../common/Footer';
 
 const Landing = () => {
   return (
     <div>
-      <h1>Landing</h1>
+      <MainLandingSection />
+      <Footer />
     </div>
   );
 };

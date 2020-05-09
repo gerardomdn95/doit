@@ -49,7 +49,11 @@ const AdminAuthContainer = () => {
       <AppNav />
       <main>
         <div className="container">
-          <AdminAuthForm />
+          <AdminAuthForm
+            loading={loading}
+            handleLogin={handleLogin}
+            handleChange={handleChange} 
+          />
         </div>
       </main>
     </div>

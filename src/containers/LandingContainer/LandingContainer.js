@@ -1,14 +1,16 @@
 import React from 'react';
+import { AppNav } from '../../common/AppNav';
 import { MainLandingSection } from '../../components/MainLandingSection';
 import { Footer } from '../../common/Footer';
 
-const Landing = () => {
+const LandingContainer = () => {
   return (
     <div>
+      <AppNav />
       <MainLandingSection />
       <Footer />
     </div>
   );
 };
 
-export default Landing;
+export default LandingContainer;

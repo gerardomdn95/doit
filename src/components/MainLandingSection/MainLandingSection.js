@@ -1,11 +1,10 @@
 import React from 'react';
-import { AppNav } from '../../common/AppNav'
 
 const MainLandingSection = () => {
 
   return (
     <div>
-      <AppNav />
+      <h1>Sección principal</h1>
     </div>
   );
 }

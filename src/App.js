@@ -11,7 +11,7 @@ const App = () => (
     <Router>
       <Route exact path="/" component={LandingContainer} key={0} />
       <Route exact path="/admin" component={AdminAuthContainer} key={1} />
-      <Route exact path="/dashboard" component={AdminDashboardContainer} key={1} />
+      <Route exact path="/dashboard" component={AdminDashboardContainer} key={2} />
     </Router>
   </AuthProvider>
 );

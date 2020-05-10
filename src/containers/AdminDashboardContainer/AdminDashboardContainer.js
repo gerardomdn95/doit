@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { AppNav } from '../../common/AppNav';
 
 const AdminDashboardContainer = () => {
   return (
     <div>
-      <h1>Logged in!</h1>
+      <AppNav />
     </div>
-  )
-}
+  );
+};
 
 export default AdminDashboardContainer;

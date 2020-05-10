@@ -9,19 +9,16 @@ import Swal from 'sweetalert2';
 const AdminAuthContainer = () => {
 
   const history = useHistory();
-
+  const [loading, setLoading] = useState('');
+  const [userValues, setUserValues] = useState({
+    email: '',
+    password: ''
+  });
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
     currentUser && history.push('/dashboard');
   }, [currentUser, history])
-
-  const [loading, setLoading] = useState('');
-
-  const [userValues, setUserValues] = useState({
-    email: '',
-    password: ''
-  });
 
   //Update inputValue on change
   const handleChange = (event) => {

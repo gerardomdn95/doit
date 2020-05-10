@@ -2,7 +2,7 @@ import React from 'react';
 import FadeIn from 'react-fade-in';
 import './adminAuthForm.scss';
 
-const AdminAuthForm = () => {
+const AdminAuthForm = ({ loading, handleLogin, handleChange }) => {
 
   return (
     <main className="auth-container">
@@ -12,15 +12,20 @@ const AdminAuthForm = () => {
           <div className="card-body">
             <form>
               <div className="form-group">
-                <label for="exampleInputEmail1">Usuario</label>
-                <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                <label htmlFor="email">Usuario</label>
+                <input type="email" className="form-control" id="email" aria-describedby="emailHelp" onChange={handleChange} />
               </div>
               <div className="form-group">
-                <label for="exampleInputPassword1">Contraseña</label>
-                <input type="password" className="form-control" id="exampleInputPassword1" />
+                <label htmlFor="password">Contraseña</label>
+                <input type="password" className="form-control" id="password" onChange={handleChange} />
               </div>
-              <button type="submit" className="btn btn-primary">Login</button>
+              <div className="d-flex justify-content-end">
+                {loading
+                  ? <div className="spinner-border" role="status">
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                  : <button onClick={handleLogin} className="btn btn-outline-dark">Iniciar sesión</button>}
+              </div>
             </form>
           </div>
         </div>

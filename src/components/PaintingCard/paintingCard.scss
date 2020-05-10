@@ -1,0 +1,14 @@
+.nav-link {
+    text-decoration: none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.disabled {
+    text-decoration: underline;
+    font-weight: 500 !important;
+    &:hover {
+        cursor: disabled;
+    }
+}

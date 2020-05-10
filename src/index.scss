@@ -1,1 +1,25 @@
+@font-face {
+    font-family: CanvasRegular;
+    src: url("./assets/fonts/CANVAS_REGULAR.otf");
+}
 
+@font-face {
+    font-family: CanvasBlack;
+    src: url("/src/assets/fonts/CANVAS_BLACK.otf");
+}
+
+@font-face {
+    font-family: CanvasLight;
+    src: url("/src/assets/fonts/CANVAS_LIGHT.otf");
+}
+
+h1, h2, h3, h4, h5, h6, small {
+    font-family: CanvasRegular;
+    text-transform: uppercase;
+}
+
+.btn {
+    font-family: CanvasLight;
+    text-transform: uppercase;
+    font-weight: 100;
+}

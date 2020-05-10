@@ -10,9 +10,9 @@ const AppNav = () => {
   }
 
   useEffect(() => {
-    console.log(currentUser);
-    console.log(userInfo);
-    console.log(AuthContext);
+    // console.log(currentUser);
+    // console.log(userInfo);
+    // console.log(AuthContext);
   }, [currentUser, userInfo]);
 
   return (

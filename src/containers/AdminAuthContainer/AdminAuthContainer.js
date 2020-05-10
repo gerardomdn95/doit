@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 const AdminAuthContainer = () => {
 
   const history = useHistory();
-  const [loading, setLoading] = useState('');
+  const [loading, setLoading] = useState(false);
   const [userValues, setUserValues] = useState({
     email: '',
     password: ''
@@ -20,16 +20,14 @@ const AdminAuthContainer = () => {
     currentUser && history.push('/dashboard');
   }, [currentUser, history])
 
-  //Update inputValue on change
   const handleChange = (event) => {
     setUserValues({ ...userValues, [event.target.id]: event.target.value })
   }
 
   const handleLogin = (e) => {
-    // Set loading status on login button
-    setLoading('is-loading');
+    e.preventDefault();
+    setLoading(true);
 
-    //Login
     signInUser(userValues.email, userValues.password)
       .catch((err) => {
         setLoading('');

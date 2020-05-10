@@ -1,8 +1,6 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/img-redundant-alt */
 import React, { useState } from 'react';
 import FadeIn from 'react-fade-in';
-import calamardo from '../../assets/jpg/calamardo.jpg';
+// import calamardo from '../../assets/jpg/calamardo.jpg';
 import './paintingCard.scss';
 
 const PaintingCard = ({title, price, description, img}) => {
@@ -19,10 +17,10 @@ const PaintingCard = ({title, price, description, img}) => {
             <p>{`$${price} MXN`}</p>
             <ul className="nav">
               <li className="nav-item">
-                <p className={`nav-link ${details ? 'active' : ''}`} onClick={() => setDetails(!details)}>Detalles</p>
+                <p className={`nav-link ${details ? 'active' : ''}`} onClick={() => setDetails(true)}>Detalles</p>
               </li>
               <li className="nav-item">
-                <p className={`nav-link ${!details ? 'active' : ''}`} onClick={() => setDetails(!details)}>Acerca de</p>
+                <p className={`nav-link ${!details ? 'active' : ''}`} onClick={() => setDetails(false)}>Acerca de</p>
               </li>
             </ul>
             { details 
@@ -33,8 +31,12 @@ const PaintingCard = ({title, price, description, img}) => {
                 </ul>
               : <p>{description}</p>}
             <div className="d-flex justify-content-center">
-              <button type="button" class="btn btn-dark">Solicita información</button>
+              <button type="button" className="btn btn-dark">Adquirir</button>
             </div>
+            {/* <div className="d-flex justify-content-around">
+              <button type="button" className="btn btn-primary">Modificar</button>
+              <button type="button" className="btn btn-danger">Eliminar</button>
+            </div> */}
           </div>
         </div>
       </FadeIn>

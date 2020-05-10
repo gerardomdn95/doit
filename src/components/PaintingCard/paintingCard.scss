@@ -1,14 +1,21 @@
 .nav-link {
     text-decoration: none;
+    padding-bottom: 3px !important;
     &:hover {
         cursor: pointer;
     }
 }
 
-.disabled {
-    text-decoration: underline;
+.active {
     font-weight: 500 !important;
+    color: cornflowerblue;
+    border-bottom: 3px solid cornflowerblue;
     &:hover {
-        cursor: disabled;
+        cursor: not-allowed;
     }
+}
+
+.card {
+    margin-bottom: 15px;
+    margin-top: 15px;
 }

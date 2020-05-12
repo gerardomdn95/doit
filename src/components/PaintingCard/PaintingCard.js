@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AuthContext } from '../../Auth';
 import FadeIn from 'react-fade-in';
 // import calamardo from '../../assets/jpg/calamardo.jpg';
 import './paintingCard.scss';
 
-const PaintingCard = ({title, price, description, img}) => {
+const PaintingCard = ({ title, price, description, img }) => {
+  const { currentUser, userInfo } = useContext(AuthContext);
   const [details, setDetails] = useState(true);
 
   return (
@@ -23,20 +25,23 @@ const PaintingCard = ({title, price, description, img}) => {
                 <p className={`nav-link ${!details ? 'active' : ''}`} onClick={() => setDetails(false)}>Acerca de</p>
               </li>
             </ul>
-            { details 
+            { details
               ? <ul>
-                  <li>Óleo</li>
-                  <li>15,25 x 19 in.</li>
-                  <li>2020</li>
-                </ul>
+                <li>Óleo</li>
+                <li>15,25 x 19 in.</li>
+                <li>2020</li>
+              </ul>
               : <p>{description}</p>}
-            <div className="d-flex justify-content-center">
-              <button type="button" className="btn btn-dark">Adquirir</button>
-            </div>
-            {/* <div className="d-flex justify-content-around">
-              <button type="button" className="btn btn-primary">Modificar</button>
-              <button type="button" className="btn btn-danger">Eliminar</button>
-            </div> */}
+            { currentUser && userInfo
+              ?
+              <div className="d-flex justify-content-around">
+                <button type="button" className="btn btn-primary">Modificar</button>
+                <button type="button" className="btn btn-danger">Eliminar</button>
+              </div>
+              :
+              <div className="d-flex justify-content-center">
+                <button type="button" className="btn btn-dark">Adquirir</button>
+              </div> }
           </div>
         </div>
       </FadeIn>

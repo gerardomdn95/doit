@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { AppNav } from '../../common/AppNav';
 import { PaintingForm } from '../../components/PaintingForm';
 import { createPainting } from '../../modules/firebaseUsage';
 import Swal from 'sweetalert2';
@@ -44,8 +43,7 @@ const AdminDashboardContainer = () => {
   }
 
   return (
-    <div>
-      <AppNav />
+    <div className="container">
       <PaintingForm
         loading={loading}
         handleCreatePainting={handleCreatePainting}

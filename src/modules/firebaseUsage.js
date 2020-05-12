@@ -4,7 +4,9 @@ const db = firebaseApp.firestore();
 
 // Create new user with firebase auth
 const createUser = (name, email, password) => {
-
+  firebaseApp.auth().createUserWithEmailAndPassword()
+    .then()
+    .catch();
 }
 
 // signin function with firebase auth
@@ -28,13 +30,13 @@ const createPainting = async (painting) => {
     });
 }
 
-const getUsersInfo = async () => {
-  return await db.collection('users').get()
+const editPainting = async (paintingId, data) => {
+  return await db.collection('painting').doc(paintingId).set(data, { merge: true })
     .then((result) => result.docs.map((doc) => doc.data()))
     .catch((err) => {
       console.error(err.message);
       return null;
-    });
+    })
 }
 
 // Get user information with firebase firestore
@@ -48,4 +50,4 @@ const getCurrentUserInfo = async () => {
     });
 }
 
-export { createUser, signInUser, getCurrentUserInfo, getUsersInfo, getPaintings, createPainting };
+export { createUser, signInUser, getCurrentUserInfo, getPaintings, createPainting, editPainting };

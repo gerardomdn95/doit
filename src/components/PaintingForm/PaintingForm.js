@@ -4,7 +4,7 @@ import FadeIn from 'react-fade-in';
 const PaintingForm = ({ loading, handleCreatePainting, handleChange }) => {
 
   return (
-    <main className="auth-container">
+    <main className="m-5">
       <FadeIn>
         <div className="card">
           <h5 className="card-header">Agregar pintura</h5>

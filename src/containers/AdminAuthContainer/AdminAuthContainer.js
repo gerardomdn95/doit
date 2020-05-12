@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { AppNav } from '../../common/AppNav';
 import { AdminAuthForm } from '../../components/AdminAuthForm';
 import { AuthContext } from '../../Auth';
 import { signInUser } from '../../modules/firebaseUsage';
@@ -17,7 +16,7 @@ const AdminAuthContainer = () => {
   const { currentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    currentUser && history.push('/dashboard');
+    currentUser && history.push('/');
   }, [currentUser, history])
 
   const handleChange = (event) => {
@@ -41,7 +40,6 @@ const AdminAuthContainer = () => {
 
   return (
     <div>
-      <AppNav />
       <main>
         <div className="container">
           <AdminAuthForm

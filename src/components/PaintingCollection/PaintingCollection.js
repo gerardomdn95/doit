@@ -7,20 +7,19 @@ export const PaintingCollection = () => {
 
   const [paintings, setPaintings] = useState([]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(async () => {
-    const firebasePaintings = await getPaintings();
-    setPaintings(firebasePaintings);
-  }, []);
+  useEffect(() => {
+    getPaintings()
+      .then((data) => setPaintings(data));
+  }, [paintings]);
 
   return (
     <div>
       <div className="container">
         <div className="row">
-          {paintings.length !== 0
+          {paintings.length > 0
             ? paintings.map((painting) =>
               <PaintingCard
-                key={painting.name}
+                key={painting.title}
                 title={painting.title}
                 description={painting.description}
                 price={painting.price}

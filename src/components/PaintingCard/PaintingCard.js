@@ -19,8 +19,8 @@ const PaintingCard = ({ title, price, description, img }) => {
       cancelButtonText: 'Cancelar',
       reverseButtons: true
     }).then((result) => {
-      Swal.showLoading();
       if (result.value) {
+        Swal.showLoading();
         deletePaintingById(title)
           .then(() => {
             Swal.fire(

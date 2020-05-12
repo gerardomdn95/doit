@@ -2,15 +2,24 @@ import firebaseApp from '../config/firebase';
 
 const db = firebaseApp.firestore();
 
-// Create new user with firebase auth
 const createUser = (name, email, password) => {
   firebaseApp.auth().createUserWithEmailAndPassword()
     .then()
     .catch();
 }
 
-// signin function with firebase auth
-const signInUser = (email, password) => firebaseApp.auth().signInWithEmailAndPassword(email, password);
+const signInUser = (email, password) =>
+  firebaseApp.auth().signInWithEmailAndPassword(email, password);
+
+const getCurrentUserInfo = async () => {
+  const userId = firebaseApp.auth().currentUser.uid;
+  return await db.collection('users').doc(userId).get()
+    .then((result) => result.data())
+    .catch((err) => {
+      console.error(err.message);
+      return null;
+    });
+}
 
 const getPaintings = async () => {
   return await db.collection('painting').get()
@@ -39,15 +48,13 @@ const editPainting = async (paintingId, data) => {
     })
 }
 
-// Get user information with firebase firestore
-const getCurrentUserInfo = async () => {
-  const userId = firebaseApp.auth().currentUser.uid;
-  return await db.collection('users').doc(userId).get()
-    .then((result) => result.data())
+const deletePainting = async (paintingId) => {
+  return await db.collection('painting').doc(paintingId).delete()
+    .then((result) => result)
     .catch((err) => {
       console.error(err.message);
       return null;
-    });
+    })
 }
 
-export { createUser, signInUser, getCurrentUserInfo, getPaintings, createPainting, editPainting };
+export { createUser, signInUser, getCurrentUserInfo, getPaintings, createPainting, editPainting, deletePainting };

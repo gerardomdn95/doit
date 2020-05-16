@@ -12,26 +12,30 @@ export const PaintingCollection = () => {
       .then((data) => setPaintings(data));
   }, [paintings]);
 
+  const renderPaintings = () => (
+    paintings.length > 0
+      ? paintings.map((painting) =>
+        <PaintingCard
+          key={painting.title}
+          title={painting.title}
+          description={painting.description}
+          price={painting.price}
+          img={painting.img}
+        />)
+      : (
+        <div className="col-12 spinner-container">
+          <div className="spinner-border" role="status">
+            <span className="sr-only">Loading...</span>
+          </div>
+        </div>
+      )
+  )
+
   return (
     <div>
       <div className="container">
         <div className="row">
-          {paintings.length > 0
-            ? paintings.map((painting) =>
-              <PaintingCard
-                key={painting.title}
-                title={painting.title}
-                description={painting.description}
-                price={painting.price}
-                img={painting.img}
-              />)
-            : (
-              <div className="col-12 spinner-container">
-                <div className="spinner-border" role="status">
-                  <span className="sr-only">Loading...</span>
-                </div>
-              </div>
-            )}
+          { paintings ? renderPaintings() : <p>Ocurrió un error al obtener las pinturas</p>}
         </div>
       </div>
     </div>

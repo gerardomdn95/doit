@@ -4,6 +4,7 @@ import { LandingContainer } from './containers/LandingContainer';
 import { AdminAuthContainer } from './containers/AdminAuthContainer';
 import { AdminDashboardContainer } from './containers/AdminDashboardContainer';
 import { AppNav } from './common/AppNav';
+import { Footer } from './common/Footer';
 import { NoMatch } from './containers/NoMatch';
 import { AuthProvider } from './Auth';
 import './App.scss';
@@ -18,6 +19,7 @@ const App = () => (
         <Route exact path="/dashboard" component={AdminDashboardContainer} key={2} />
         <Route component={NoMatch} />
       </Switch>
+      <Footer />
     </Router>
   </AuthProvider>
 );

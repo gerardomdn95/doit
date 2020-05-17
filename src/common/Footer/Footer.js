@@ -9,7 +9,7 @@ export const Footer = () => {
     <footer class="app-footer bg-dark text-light">
       {/* <p>Built by <a href="https://twitter.com/gerardomdnr">@gerardomdnr</a></p> */}
       <p>
-        <a href="https://open.spotify.com/artist/5z2v7F21UQXrFvKjrvXOqf?si=spGirwaMR7GBpuVX5EBimA">
+        <a href="https://open.spotify.com/artist/5z2v7F21UQXrFvKjrvXOqf?si=Kj1l7qMQTgq77ViztFilaQ">
           <FontAwesomeIcon icon={faSpotify} />
         </a>
         <a href="https://www.instagram.com/edoardoleds/">

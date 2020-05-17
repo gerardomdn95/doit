@@ -2,9 +2,15 @@
     padding: 2.5rem 0;
     text-align: center;
     border-top: .05rem solid #e5e5e5;
-}
-
-svg {
-    margin: 25px;
-    font-size: 25px !important;
+    a {
+        color: white;
+    }
+    svg {
+        margin: 25px;
+        font-size: 25px !important;
+        &:hover {
+            cursor: pointer;
+            color: cornflowerblue;
+        }
+    }
 }

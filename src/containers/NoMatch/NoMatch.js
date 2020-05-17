@@ -1,8 +1,9 @@
 import React from 'react';
+import './notMatch.scss';
 
 export const NoMatch = () => {
 	return (
-		<div className="m-5">
+		<div className="notMatch-container">
 			<h1 className="text-center">404</h1>
 			<h2 className="text-center">Not Found</h2>
 		</div>

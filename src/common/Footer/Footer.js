@@ -4,15 +4,23 @@ import { faFacebookSquare, faInstagram, faTwitter, faSpotify } from '@fortawesom
 import './footer.scss';
 
 export const Footer = () => {
+
   return (
     <footer class="app-footer bg-dark text-light">
       {/* <p>Built by <a href="https://twitter.com/gerardomdnr">@gerardomdnr</a></p> */}
-      <p>SOCIAL MEDIA</p>
       <p>
-        <FontAwesomeIcon icon={faSpotify} />
-        <FontAwesomeIcon icon={faInstagram} />
-        <FontAwesomeIcon icon={faTwitter} />
-        <FontAwesomeIcon icon={faFacebookSquare} />
+        <a href="https://twitter.com/">
+          <FontAwesomeIcon icon={faSpotify} />
+        </a>
+        <a href="https://twitter.com/">
+          <FontAwesomeIcon icon={faInstagram} />
+        </a>
+        <a href="https://twitter.com/">
+          <FontAwesomeIcon icon={faTwitter} />
+        </a>
+        <a href="https://twitter.com/">
+          <FontAwesomeIcon icon={faFacebookSquare} />
+        </a>
       </p>
     </footer>
   )

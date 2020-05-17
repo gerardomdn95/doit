@@ -19,8 +19,16 @@ const PaintingForm = ({ loading, handleCreatePainting, handleChange }) => {
                 <input type="number" min="0" className="form-control" id="price" onChange={handleChange} />
               </div>
               <div className="form-group">
+                <label htmlFor="size">Dimensiones</label>
+                <textarea type="text" className="form-control" id="size" onChange={handleChange} />
+              </div>
+              <div className="form-group">
                 <label htmlFor="img">Imagen</label>
                 <input type="text" min="0" className="form-control" id="img" onChange={handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="technique">Técnica</label>
+                <textarea type="text" className="form-control" id="technique" onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="description">Descripción</label>

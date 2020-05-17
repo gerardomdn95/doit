@@ -5,7 +5,7 @@ import FadeIn from 'react-fade-in';
 import Swal from 'sweetalert2';
 import './paintingCard.scss';
 
-const PaintingCard = ({ title, price, description, img }) => {
+const PaintingCard = ({ title, price, description, img, technique, size }) => {
   const { currentUser, userInfo } = useContext(AuthContext);
   const [details, setDetails] = useState(true);
 
@@ -52,8 +52,8 @@ const PaintingCard = ({ title, price, description, img }) => {
             </ul>
             {details
               ? <ul>
-                <li>Óleo</li>
-                <li>15,25 x 19 in.</li>
+                <li>{technique}</li>
+                <li>{size}</li>
                 <li>2020</li>
               </ul>
               : <p>{description}</p>}

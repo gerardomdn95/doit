@@ -10,7 +10,7 @@ export const PaintingCollection = () => {
   useEffect(() => {
     getPaintings()
       .then((data) => setPaintings(data));
-  }, [paintings]);
+  }, []);
 
   const renderPaintings = () => (
     paintings.length > 0
@@ -21,6 +21,8 @@ export const PaintingCollection = () => {
           description={painting.description}
           price={painting.price}
           img={painting.img}
+          technique={painting.technique}
+          size={painting.size}
         />)
       : (
         <div className="col-12 spinner-container">

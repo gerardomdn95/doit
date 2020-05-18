@@ -34,7 +34,7 @@ export const PaintingCollection = () => {
   )
 
   return (
-    <div>
+    <div className="navbar-light bg-light">
       <div className="container">
         <div className="row">
           { paintings ? renderPaintings() : <p>Ocurrió un error al obtener las pinturas</p>}

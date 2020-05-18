@@ -5,7 +5,7 @@ import './adminAuthForm.scss';
 const AdminAuthForm = ({ loading, handleLogin, handleChange }) => {
 
   return (
-    <main className="m-5">
+    <main className="m-5 admin-form">
       <FadeIn>
         <div className="card">
           <h5 className="card-header">Admin</h5>

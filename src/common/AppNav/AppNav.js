@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../Auth';
-import { Link } from 'react-router-dom';
 import firebaseApp from '../../config/firebase';
+import { useHistory, Link } from 'react-router-dom';
 import './appNav.scss';
 
 const AppNav = () => {
+  const history = useHistory();
   const { currentUser, userInfo } = useContext(AuthContext);
 
   const LogOut = () => {
@@ -20,7 +21,7 @@ const AppNav = () => {
         {currentUser && userInfo
           ? (
             <div>
-              <Link type="button" className="btn btn-success" to="/dashboard">Agregar</Link>
+              <button type="button" className="btn btn-success" onClick={() => history.push('/dashboard')}>Agregar</button>
               <button type="button" className="btn btn-danger" onClick={() => LogOut()}>Logout</button>
             </div>
           )

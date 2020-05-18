@@ -7,6 +7,7 @@ import { AppNav } from './common/AppNav';
 import { Footer } from './common/Footer';
 import { NoMatch } from './containers/NoMatch';
 import { AuthProvider } from './Auth';
+import PrivateRoute from './routes/PrivateRoute';
 import './App.scss';
 
 const App = () => (
@@ -16,7 +17,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={LandingContainer} key={0} />
         <Route exact path="/admin" component={AdminAuthContainer} key={1} />
-        <Route exact path="/dashboard" component={AdminDashboardContainer} key={2} />
+        <PrivateRoute exact path="/dashboard" component={AdminDashboardContainer} key={2} />
         <Route component={NoMatch} />
       </Switch>
       <Footer />

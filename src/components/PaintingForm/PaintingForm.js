@@ -1,10 +1,11 @@
 import React from 'react';
 import FadeIn from 'react-fade-in';
+import './paintingForm.scss';
 
 const PaintingForm = ({ loading, handleCreatePainting, handleChange }) => {
 
   return (
-    <main className="m-5">
+    <main className="m-5 add-form">
       <FadeIn>
         <div className="card">
           <h5 className="card-header">Agregar pintura</h5>
@@ -20,7 +21,7 @@ const PaintingForm = ({ loading, handleCreatePainting, handleChange }) => {
               </div>
               <div className="form-group">
                 <label htmlFor="size">Dimensiones</label>
-                <textarea type="text" className="form-control" id="size" onChange={handleChange} />
+                <input type="text" className="form-control" id="size" onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="img">Imagen</label>
@@ -28,7 +29,7 @@ const PaintingForm = ({ loading, handleCreatePainting, handleChange }) => {
               </div>
               <div className="form-group">
                 <label htmlFor="technique">Técnica</label>
-                <textarea type="text" className="form-control" id="technique" onChange={handleChange} />
+                <input type="text" className="form-control" id="technique" onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="description">Descripción</label>

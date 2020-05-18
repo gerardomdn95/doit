@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Auth';
-import { deletePaintingById } from '../../modules/firebaseUsage';
+import { deletePainting } from '../../modules/firebaseUsage';
 import FadeIn from 'react-fade-in';
 import Swal from 'sweetalert2';
 import './paintingCard.scss';
@@ -23,11 +23,11 @@ const PaintingCard = ({ title, price, description, img, technique, size }) => {
     }).then((result) => {
       if (result.value) {
         Swal.showLoading();
-        deletePaintingById(title)
+        deletePainting(title)
           .then(() => {
             Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
+              'Pintura eliminada',
+              `${title} fue eliminada`,
               'success'
             )
           })
@@ -63,17 +63,11 @@ const PaintingCard = ({ title, price, description, img, technique, size }) => {
                       <li>2020</li>
                     </ul>
                     : <p>{description}</p>}
-                  {currentUser && userInfo
-                    ?
                     <div className="d-flex justify-content-around">
-                      <button type="button" className="btn btn-primary">Modificar</button>
-                      <button onClick={() => deletePainting()} type="button" className="btn btn-danger">Eliminar</button>
+                      { currentUser && userInfo
+                        ? <button onClick={() => deletePainting()} type="button" className="btn btn-danger">Eliminar</button>
+                        : <button onClick={() => setContact(true)} type="button" className="btn btn-dark">Adquirir</button> }
                     </div>
-                    :
-                    <div className="d-flex justify-content-center">
-                      <button onClick={() => setContact(true)} type="button" className="btn btn-dark">Adquirir</button>
-                    </div>
-                  }
                 </section>
               )}
           </div>

@@ -48,8 +48,8 @@ const editPainting = async (paintingId, data) => {
     })
 }
 
-const deletePaintingById = async (paintingId) => {
-  return await db.collection('painting').doc(paintingId).delete()
+const deletePainting = async (paintingTitle) => {
+  return await db.collection('painting').where("title", "==", paintingTitle)
     .then((result) => result)
     .catch((err) => {
       console.error(err.message);
@@ -57,4 +57,4 @@ const deletePaintingById = async (paintingId) => {
     })
 }
 
-export { createUser, signInUser, getCurrentUserInfo, getPaintings, createPainting, editPainting, deletePaintingById };
+export { createUser, signInUser, getCurrentUserInfo, getPaintings, createPainting, editPainting, deletePainting };

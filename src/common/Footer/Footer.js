@@ -6,7 +6,7 @@ import './footer.scss';
 export const Footer = () => {
 
   return (
-    <footer class="app-footer bg-dark text-light">
+    <footer className="app-footer bg-dark text-light">
       {/* <p>Built by <a href="https://twitter.com/gerardomdnr">@gerardomdnr</a></p> */}
       <p>
         <a href="https://open.spotify.com/artist/5z2v7F21UQXrFvKjrvXOqf?si=Kj1l7qMQTgq77ViztFilaQ">

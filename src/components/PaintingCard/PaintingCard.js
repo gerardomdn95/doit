@@ -4,10 +4,12 @@ import { deletePaintingById } from '../../modules/firebaseUsage';
 import FadeIn from 'react-fade-in';
 import Swal from 'sweetalert2';
 import './paintingCard.scss';
+import MoreInfoForm from '../MoreInfoForm/MoreInfoForm';
 
 const PaintingCard = ({ title, price, description, img, technique, size }) => {
   const { currentUser, userInfo } = useContext(AuthContext);
   const [details, setDetails] = useState(true);
+  const [contact, setContact] = useState(false);
 
   const deletePainting = () => {
     Swal.fire({
@@ -41,32 +43,39 @@ const PaintingCard = ({ title, price, description, img, technique, size }) => {
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
             <hr />
-            <p>{`$${price} MXN`}</p>
-            <ul className="nav">
-              <li className="nav-item">
-                <p className={`nav-link ${details ? 'active' : ''}`} onClick={() => setDetails(true)}>Detalles</p>
-              </li>
-              <li className="nav-item">
-                <p className={`nav-link ${!details ? 'active' : ''}`} onClick={() => setDetails(false)}>Acerca de</p>
-              </li>
-            </ul>
-            {details
-              ? <ul>
-                <li>{technique}</li>
-                <li>{size}</li>
-                <li>2020</li>
-              </ul>
-              : <p>{description}</p>}
-            {currentUser && userInfo
-              ?
-              <div className="d-flex justify-content-around">
-                <button type="button" className="btn btn-primary">Modificar</button>
-                <button onClick={() => deletePainting()} type="button" className="btn btn-danger">Eliminar</button>
-              </div>
-              :
-              <div className="d-flex justify-content-center">
-                <button type="button" className="btn btn-dark">Adquirir</button>
-              </div>}
+            {contact
+              ? <MoreInfoForm painting={title} setContact={setContact} />
+              : (
+                <section>
+                  <p>{`$${price} MXN`}</p>
+                  <ul className="nav">
+                    <li className="nav-item">
+                      <p className={`nav-link ${details ? 'active' : ''}`} onClick={() => setDetails(true)}>Detalles</p>
+                    </li>
+                    <li className="nav-item">
+                      <p className={`nav-link ${!details ? 'active' : ''}`} onClick={() => setDetails(false)}>Acerca de</p>
+                    </li>
+                  </ul>
+                  {details
+                    ? <ul>
+                      <li>{technique}</li>
+                      <li>{size}</li>
+                      <li>2020</li>
+                    </ul>
+                    : <p>{description}</p>}
+                  {currentUser && userInfo
+                    ?
+                    <div className="d-flex justify-content-around">
+                      <button type="button" className="btn btn-primary">Modificar</button>
+                      <button onClick={() => deletePainting()} type="button" className="btn btn-danger">Eliminar</button>
+                    </div>
+                    :
+                    <div className="d-flex justify-content-center">
+                      <button onClick={() => setContact(true)} type="button" className="btn btn-dark">Adquirir</button>
+                    </div>
+                  }
+                </section>
+              )}
           </div>
         </div>
       </FadeIn>

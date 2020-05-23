@@ -1,4 +1,5 @@
 import firebaseApp from '../config/firebase';
+import { v4 as uuidv4 } from 'uuid';
 
 const db = firebaseApp.firestore();
 
@@ -31,7 +32,8 @@ const getPaintings = async () => {
 }
 
 const createPainting = async (painting) => {
-  return await db.collection('painting').add(painting)
+  const uuid = uuidv4();
+  return await db.collection('painting').doc(uuid).set({ paintingId: uuid, ...painting })
     .then((result) => result.docs.map((doc) => doc.data()))
     .catch((err) => {
       console.error(err.message);
@@ -39,18 +41,18 @@ const createPainting = async (painting) => {
     });
 }
 
-const editPainting = async (paintingId, data) => {
-  return await db.collection('painting').doc(paintingId).set(data, { merge: true })
-    .then((result) => result.docs.map((doc) => doc.data()))
+const deletePainting = async (paintingId) => {
+  return await db.collection('painting').doc(paintingId)
+    .then((result) => result)
     .catch((err) => {
       console.error(err.message);
       return null;
     })
 }
 
-const deletePainting = async (paintingTitle) => {
-  return await db.collection('painting').where("title", "==", paintingTitle)
-    .then((result) => result)
+const editPainting = async (paintingId, data) => {
+  return await db.collection('painting').doc(paintingId).set(data, { merge: true })
+    .then((result) => result.docs.map((doc) => doc.data()))
     .catch((err) => {
       console.error(err.message);
       return null;

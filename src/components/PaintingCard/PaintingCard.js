@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Auth';
-import { deletePainting } from '../../modules/firebaseUsage';
+import { deletePaintingById } from '../../modules/firebaseUsage';
 import FadeIn from 'react-fade-in';
 import Swal from 'sweetalert2';
 import './paintingCard.scss';
 import MoreInfoForm from '../MoreInfoForm/MoreInfoForm';
 
-const PaintingCard = ({ title, price, description, img, technique, size }) => {
+const PaintingCard = ({ title, price, printPrice, description, img, technique, size, paintingId, printSize, printStock }) => {
   const { currentUser, userInfo } = useContext(AuthContext);
   const [details, setDetails] = useState(true);
   const [contact, setContact] = useState(false);
@@ -23,13 +23,13 @@ const PaintingCard = ({ title, price, description, img, technique, size }) => {
     }).then((result) => {
       if (result.value) {
         Swal.showLoading();
-        deletePainting(title)
+        deletePaintingById(paintingId)
           .then(() => {
             Swal.fire(
               'Pintura eliminada',
               `${title} fue eliminada`,
               'success'
-            )
+            ).then(() => window.location.reload())
           })
       }
     })
@@ -47,6 +47,7 @@ const PaintingCard = ({ title, price, description, img, technique, size }) => {
               ? <MoreInfoForm painting={title} setContact={setContact} />
               : (
                 <section>
+                  <h6 className="font-weight-bold">Original</h6>
                   <p>{`$${price} MXN`}</p>
                   <ul className="nav">
                     <li className="nav-item">
@@ -57,17 +58,27 @@ const PaintingCard = ({ title, price, description, img, technique, size }) => {
                     </li>
                   </ul>
                   {details
-                    ? <ul>
-                      <li>{technique}</li>
-                      <li>{size}</li>
-                      <li>2020</li>
-                    </ul>
+                    ? <section className="section-container">
+                      <p className="font-weight-bold">Original</p>
+                      <ul>
+                        <li>{technique}</li>
+                        <li>{size}</li>
+                        <li>2020</li>
+                      </ul>
+                      <p className="font-weight-bold">Print</p>
+                      <p>{`Precio: $${printPrice} MXN`}</p>
+                      <ul>
+                        <li>Impresión digital sobre papel, seriadas y firmadas.</li>
+                        <li>{printSize}</li>
+                        <li>{`Unicamente ${printStock} disponibles.`}</li>
+                      </ul>
+                    </section>
                     : <p>{description}</p>}
-                    <div className="d-flex justify-content-around">
-                      { currentUser && userInfo
-                        ? <button onClick={() => deletePainting()} type="button" className="btn btn-danger">Eliminar</button>
-                        : <button onClick={() => setContact(true)} type="button" className="btn btn-dark">Adquirir</button> }
-                    </div>
+                  <div className="d-flex justify-content-around">
+                    {currentUser && userInfo
+                      ? <button onClick={() => deletePainting()} type="button" className="btn btn-danger">Eliminar</button>
+                      : <button onClick={() => setContact(true)} type="button" className="btn btn-dark">Adquirir</button>}
+                  </div>
                 </section>
               )}
           </div>

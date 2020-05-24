@@ -23,6 +23,7 @@ export const PaintingCollection = () => {
           img={painting.img}
           technique={painting.technique}
           size={painting.size}
+          paintingId={painting.paintingId}
         />)
       : (
         <div className="col-12 spinner-container">

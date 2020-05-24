@@ -41,8 +41,8 @@ const createPainting = async (painting) => {
     });
 }
 
-const deletePainting = async (paintingId) => {
-  return await db.collection('painting').doc(paintingId)
+const deletePaintingById = async (paintingId) => {
+  return await db.collection('painting').doc(paintingId).delete()
     .then((result) => result)
     .catch((err) => {
       console.error(err.message);
@@ -59,4 +59,4 @@ const editPainting = async (paintingId, data) => {
     })
 }
 
-export { createUser, signInUser, getCurrentUserInfo, getPaintings, createPainting, editPainting, deletePainting };
+export { createUser, signInUser, getCurrentUserInfo, getPaintings, createPainting, editPainting, deletePaintingById };

@@ -44,6 +44,16 @@ const MoreInfoForm = ({ painting, setContact }) => {
               <label htmlFor="email">Correo electrónico</label>
               <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" />
             </div>
+            <div className="form-group d-flex justify-content-around">
+              <div>
+                <input type="radio" id="original" name="Tipo" value="Original" style={{marginRight: `${5}px`}} />
+                <label for="original">Original</label>
+              </div>
+              <div>
+                <input type="radio" id="print" name="Tipo" value="Original" style={{marginRight: `${5}px`}} />
+                <label for="print">Print</label>
+              </div>
+            </div>
             <div className="form-group">
               <label htmlFor="message">Mensaje</label>
               <textarea className="form-control" name="Mensaje" id="message" rows="3"></textarea>

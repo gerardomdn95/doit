@@ -34,7 +34,6 @@ const MoreInfoForm = ({ painting, setContact }) => {
       {status === '' &&
         (
           <section>
-            {/* <FontAwesomeIcon icon={faArrowLeft} onClick={setContact(false)} /> */}
             <input readOnly type="text" className="d-none" value={painting} name="Pintura" />
             <div className="form-group">
               <label htmlFor="name">Nombre</label>

@@ -16,12 +16,24 @@ const PaintingForm = ({ loading, handleCreatePainting, handleChange }) => {
                 <input type="text" className="form-control" id="title" onChange={handleChange} />
               </div>
               <div className="form-group">
-                <label htmlFor="price">Precio</label>
+                <label htmlFor="price">Precio Original</label>
                 <input type="number" min="0" className="form-control" id="price" onChange={handleChange} />
               </div>
               <div className="form-group">
-                <label htmlFor="size">Dimensiones</label>
+                <label htmlFor="printPrice">Precio Print</label>
+                <input type="number" min="0" className="form-control" id="printPrice" onChange={handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="size">Dimensiones Original</label>
                 <input type="text" className="form-control" id="size" onChange={handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="printSize">Dimensiones Print</label>
+                <input type="text" className="form-control" id="printSize" onChange={handleChange} />
+              </div>
+              <div className="form-group">
+                <label htmlFor="printStock">Prints disponibles</label>
+                <input type="number" min="0" className="form-control" id="printStock" onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="img">Imagen</label>

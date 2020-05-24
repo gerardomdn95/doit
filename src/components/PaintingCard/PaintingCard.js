@@ -47,7 +47,6 @@ const PaintingCard = ({ title, price, printPrice, description, img, technique, s
               ? <MoreInfoForm painting={title} setContact={setContact} />
               : (
                 <section>
-                  <h6 className="font-weight-bold">Original</h6>
                   <p>{`$${price} MXN`}</p>
                   <ul className="nav">
                     <li className="nav-item">
@@ -66,8 +65,8 @@ const PaintingCard = ({ title, price, printPrice, description, img, technique, s
                         <li>2020</li>
                       </ul>
                       <p className="font-weight-bold">Print</p>
-                      <p>{`Precio: $${printPrice} MXN`}</p>
                       <ul>
+                        <li>{`Precio: $${printPrice} MXN`}</li>
                         <li>Impresión digital sobre papel, seriadas y firmadas.</li>
                         <li>{printSize}</li>
                         <li>{`Unicamente ${printStock} disponibles.`}</li>

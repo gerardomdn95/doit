@@ -20,6 +20,9 @@ export const PaintingCollection = () => {
           title={painting.title}
           description={painting.description}
           price={painting.price}
+          printPrice={painting.printPrice}
+          printStock={painting.printStock}
+          printSize={painting.printSize}
           img={painting.img}
           technique={painting.technique}
           size={painting.size}

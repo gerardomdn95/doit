@@ -2,6 +2,7 @@ import firebaseApp from '../config/firebase';
 import { v4 as uuidv4 } from 'uuid';
 
 const db = firebaseApp.firestore();
+// const storage = firebaseApp.storage();
 
 const createUser = (name, email, password) => {
   firebaseApp.auth().createUserWithEmailAndPassword()

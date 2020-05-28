@@ -69,7 +69,7 @@ const PaintingCard = ({ title, price, printPrice, description, img, technique, s
                         <li>{`Precio: $${printPrice} MXN`}</li>
                         <li>Impresión digital sobre papel, seriadas y firmadas.</li>
                         <li>{printSize}</li>
-                        <li>{`Unicamente ${printStock} disponibles.`}</li>
+                        <li>{`Unicamente ${printStock} existentes.`}</li>
                       </ul>
                     </section>
                     : <p>{description}</p>}

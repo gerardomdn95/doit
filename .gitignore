@@ -25,3 +25,6 @@ package-lock.json
 
 # Firebase
 .env
+.firebaserc
+.firebase
+firebase-debug.log

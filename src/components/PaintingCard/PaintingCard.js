@@ -9,6 +9,7 @@ import MoreInfoForm from '../MoreInfoForm/MoreInfoForm';
 const PaintingCard = ({ title, price, printPrice, description, img, technique, size, paintingId, printSize, printStock }) => {
   const { currentUser, userInfo } = useContext(AuthContext);
   const [details, setDetails] = useState(true);
+  const [about, setAbout] = useState(false);
   const [contact, setContact] = useState(false);
 
   const deletePainting = () => {
@@ -43,43 +44,43 @@ const PaintingCard = ({ title, price, printPrice, description, img, technique, s
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
             <hr />
-            {contact
-              ? <MoreInfoForm painting={title} setContact={setContact} />
-              : (
-                <section>
-                  <p>{`$${price} MXN`}</p>
-                  <ul className="nav">
-                    <li className="nav-item">
-                      <p className={`nav-link ${details ? 'active' : ''}`} onClick={() => setDetails(true)}>Detalles</p>
-                    </li>
-                    <li className="nav-item">
-                      <p className={`nav-link ${!details ? 'active' : ''}`} onClick={() => setDetails(false)}>Acerca de</p>
-                    </li>
+            <section>
+              <p>{`$${price} MXN`}</p>
+              <ul className="nav">
+                <li className="nav-item">
+                  <p className={`nav-link ${details ? 'active' : ''}`} onClick={() => {setAbout(false); setDetails(true); setContact(false); }}>Detalles</p>
+                </li>
+                <li className="nav-item">
+                  <p className={`nav-link ${about ? 'active' : ''}`} onClick={() => {setAbout(true); setDetails(false); setContact(false); }}>Acerca de</p>
+                </li>
+                <li className="nav-item">
+                  <p className={`nav-link ${contact ? 'active' : ''}`} onClick={() => {setAbout(false); setDetails(false); setContact(true); }}>Adquirir</p>
+                </li>
+              </ul>
+              {details &&
+                <section className="section-container">
+                  <p className="font-weight-bold">Original</p>
+                  <ul>
+                    <li>{technique}</li>
+                    <li>{size}</li>
+                    <li>2020</li>
                   </ul>
-                  {details
-                    ? <section className="section-container">
-                      <p className="font-weight-bold">Original</p>
-                      <ul>
-                        <li>{technique}</li>
-                        <li>{size}</li>
-                        <li>2020</li>
-                      </ul>
-                      <p className="font-weight-bold">Print</p>
-                      <ul>
-                        <li>{`Precio: $${printPrice} MXN`}</li>
-                        <li>Impresión digital sobre papel, seriadas y firmadas.</li>
-                        <li>{printSize}</li>
-                        <li>{`Unicamente ${printStock} existentes.`}</li>
-                      </ul>
-                    </section>
-                    : <p>{description}</p>}
-                  <div className="d-flex justify-content-around">
-                    {currentUser && userInfo
-                      ? <button onClick={() => deletePainting()} type="button" className="btn btn-danger">Eliminar</button>
-                      : <button onClick={() => setContact(true)} type="button" className="btn btn-dark">Adquirir</button>}
-                  </div>
-                </section>
-              )}
+                  <p className="font-weight-bold">Print</p>
+                  <ul>
+                    <li>{`Precio: $${printPrice} MXN`}</li>
+                    <li>Impresión digital sobre papel, seriadas y firmadas.</li>
+                    <li>{printSize}</li>
+                    <li>{`Unicamente ${printStock} existentes.`}</li>
+                  </ul>
+                </section>}
+              {about && <p>{description}</p>}
+              {contact && <MoreInfoForm painting={title} setContact={setContact} />}
+              <div className="d-flex justify-content-around">
+                {currentUser && userInfo
+                  ? <button onClick={() => deletePainting()} type="button" className="btn btn-danger">Eliminar</button>
+                  : null}
+              </div>
+            </section>
           </div>
         </div>
       </FadeIn>

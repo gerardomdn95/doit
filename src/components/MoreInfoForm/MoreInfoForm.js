@@ -36,25 +36,25 @@ const MoreInfoForm = ({ painting, setContact }) => {
           <section>
             <input readOnly type="text" className="d-none" value={painting} name="Pintura" />
             <div className="form-group">
-              <label htmlFor="name">Nombre</label>
+              <label htmlFor="name" className="font-weight-bold">Nombre</label>
               <input type="text" className="form-control" id="name" name="Nombre" />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Correo electrónico</label>
+              <label htmlFor="email" className="font-weight-bold">Correo electrónico</label>
               <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" />
             </div>
             <div className="form-group d-flex justify-content-around">
               <div>
                 <input type="radio" id="original" name="Tipo" value="Original" style={{marginRight: `${5}px`}} />
-                <label for="original">Original</label>
+                <label for="original" className="font-weight-bold">Original</label>
               </div>
               <div>
                 <input type="radio" id="print" name="Tipo" value="Original" style={{marginRight: `${5}px`}} />
-                <label for="print">Print</label>
+                <label for="print" className="font-weight-bold">Print</label>
               </div>
             </div>
             <div className="form-group">
-              <label htmlFor="message">Mensaje</label>
+              <label htmlFor="message" className="font-weight-bold">Mensaje</label>
               <textarea className="form-control" name="Mensaje" id="message" rows="3"></textarea>
             </div>
           </section>

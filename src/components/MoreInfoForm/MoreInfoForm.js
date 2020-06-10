@@ -54,6 +54,14 @@ const MoreInfoForm = ({ painting, setContact }) => {
               </div>
             </div>
             <div className="form-group">
+              <label htmlFor="cp" className="font-weight-bold">Código Postal</label>
+              <input type="text" className="form-control" id="cp" name="Código Postal" maxLength="5" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="adress" className="font-weight-bold">Dirección</label>
+              <input type="text" className="form-control" id="adress" name="Dirección" />
+            </div>
+            <div className="form-group">
               <label htmlFor="message" className="font-weight-bold">Mensaje</label>
               <textarea className="form-control" name="Mensaje" id="message" rows="3"></textarea>
             </div>

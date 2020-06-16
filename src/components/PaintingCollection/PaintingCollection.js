@@ -27,6 +27,7 @@ export const PaintingCollection = () => {
           technique={painting.technique}
           size={painting.size}
           paintingId={painting.paintingId}
+          paypal={painting.paypal}
         />)
       : (
         <div className="col-12 spinner-container">

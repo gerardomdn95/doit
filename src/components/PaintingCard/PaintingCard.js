@@ -4,9 +4,14 @@ import { deletePaintingById } from '../../modules/firebaseUsage';
 import FadeIn from 'react-fade-in';
 import Swal from 'sweetalert2';
 import './paintingCard.scss';
-import MoreInfoForm from '../MoreInfoForm/MoreInfoForm';
+import { MoreInfoForm } from '../MoreInfoForm';
+import { SetHTML } from '../SetHTML';
 
-const PaintingCard = ({ title, price, printPrice, description, img, technique, size, paintingId, printSize, printStock }) => {
+const PaintingCard = ({
+  title, price, printPrice, description,
+  img, technique, size, paintingId,
+  printSize, printStock, paypal
+}) => {
   const { currentUser, userInfo } = useContext(AuthContext);
   const [details, setDetails] = useState(true);
   const [about, setAbout] = useState(false);
@@ -37,7 +42,7 @@ const PaintingCard = ({ title, price, printPrice, description, img, technique, s
   }
 
   return (
-    <div className="col-12 col-md-6 col-lg-3">
+    <div className="col-12 col-md-6 col-lg-4">
       <FadeIn>
         <div className="card">
           <img className="card-img-top" src={img} alt={img.title} />
@@ -45,22 +50,22 @@ const PaintingCard = ({ title, price, printPrice, description, img, technique, s
             <h5 className="card-title">{title}</h5>
             <hr />
             <section>
-              <p>{`$${price} MXN`}</p>
               <ul className="nav">
                 <li className="nav-item">
-                  <p className={`nav-link ${details ? 'active' : ''}`} onClick={() => {setAbout(false); setDetails(true); setContact(false); }}>Detalles</p>
+                  <p className={`nav-link ${details ? 'active' : ''}`} onClick={() => { setAbout(false); setDetails(true); setContact(false); }}>Detalles</p>
                 </li>
                 <li className="nav-item">
-                  <p className={`nav-link ${about ? 'active' : ''}`} onClick={() => {setAbout(true); setDetails(false); setContact(false); }}>Acerca de</p>
+                  <p className={`nav-link ${about ? 'active' : ''}`} onClick={() => { setAbout(true); setDetails(false); setContact(false); }}>Acerca de</p>
                 </li>
                 <li className="nav-item">
-                  <p className={`nav-link ${contact ? 'active' : ''}`} onClick={() => {setAbout(false); setDetails(false); setContact(true); }}>Adquirir</p>
+                  <p className={`nav-link ${contact ? 'active' : ''}`} onClick={() => { setAbout(false); setDetails(false); setContact(true); }}>Adquirir</p>
                 </li>
               </ul>
               {details &&
                 <section className="section-container">
                   <p className="font-weight-bold">Original</p>
                   <ul>
+                    <li>{`Precio: $${price} MXN`}</li>
                     <li>{technique}</li>
                     <li>{size}</li>
                     <li>2020</li>
@@ -68,13 +73,22 @@ const PaintingCard = ({ title, price, printPrice, description, img, technique, s
                   <p className="font-weight-bold">Print</p>
                   <ul>
                     <li>{`Precio: $${printPrice} MXN`}</li>
-                    <li>Impresión digital sobre papel, seriadas y firmadas.</li>
                     <li>{printSize}</li>
                     <li>{`Unicamente ${printStock} existentes.`}</li>
                   </ul>
                 </section>}
               {about && <p>{description}</p>}
-              {contact && <MoreInfoForm painting={title} setContact={setContact} />}
+              {contact && (
+                <div>
+                  <p className="font-weight-bold">Paga con Paypal</p>
+                  <SetHTML paypalButton={paypal} />
+                  <br />
+                  <hr />
+                  <br />
+                  <p className="font-weight-bold">¿No cuentas con Paypal?</p>
+                  <MoreInfoForm painting={title} setContact={setContact} />
+                </div>
+              )}
               <div className="d-flex justify-content-around">
                 {currentUser && userInfo
                   ? <button onClick={() => deletePainting()} type="button" className="btn btn-danger">Eliminar</button>

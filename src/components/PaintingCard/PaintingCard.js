@@ -10,7 +10,7 @@ import { SetHTML } from '../SetHTML';
 const PaintingCard = ({
   title, price, printPrice, description,
   img, technique, size, paintingId,
-  printSize, printStock, paypal
+  printSize, paypal
 }) => {
   const { currentUser, userInfo } = useContext(AuthContext);
   const [details, setDetails] = useState(true);
@@ -58,26 +58,27 @@ const PaintingCard = ({
                   <p className={`nav-link ${about ? 'active' : ''}`} onClick={() => { setAbout(true); setDetails(false); setContact(false); }}>Acerca de</p>
                 </li>
                 <li className="nav-item">
-                  <p className={`nav-link ${contact ? 'active' : ''}`} onClick={() => { setAbout(false); setDetails(false); setContact(true); }}>Adquirir</p>
+                  <p className={`nav-link ${contact ? 'active' : ''} text-info`} onClick={() => { setAbout(false); setDetails(false); setContact(true); }}>Adquirir</p>
                 </li>
               </ul>
               {details &&
                 <section className="section-container">
                   <p className="font-weight-bold">Original</p>
                   <ul>
-                    <li>{`Precio: $${price} MXN`}</li>
+                    { price &&  <li>{`Precio: $${price} MXN`}</li>}
                     <li>{technique}</li>
-                    <li>{size}</li>
+                    { price && <li>{size}</li>}
                     <li>2020</li>
                   </ul>
                   <p className="font-weight-bold">Print</p>
                   <ul>
                     <li>{`Precio: $${printPrice} MXN`}</li>
                     <li>{printSize}</li>
-                    <li>{`Unicamente ${printStock} existentes.`}</li>
                   </ul>
                 </section>}
-              {about && <p>{description}</p>}
+              {about && <p>
+                Los prints son impresiones sobre papel de arte de alta calidad, cada print está firmado y seriado. El enmarcado es una elegante moldura de poliestireno negro.
+                </p>}
               {contact && (
                 <div>
                   <p className="font-weight-bold">Paga con Paypal</p>

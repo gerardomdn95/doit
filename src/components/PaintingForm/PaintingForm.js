@@ -44,8 +44,8 @@ const PaintingForm = ({ loading, handleCreatePainting, handleChange }) => {
                 <input type="text" className="form-control" id="technique" onChange={handleChange} />
               </div>
               <div className="form-group">
-                <label htmlFor="description">Descripción</label>
-                <textarea type="text" className="form-control" id="description" onChange={handleChange} />
+                <label htmlFor="paypal">Botón Paypal</label>
+                <textarea type="text" className="form-control" id="paypal" onChange={handleChange} />
               </div>
               <div className="d-flex justify-content-end">
                 {loading

@@ -8,7 +8,7 @@ import { MoreInfoForm } from '../MoreInfoForm';
 import { SetHTML } from '../SetHTML';
 
 const PaintingCard = ({
-  title, price, printPrice, description,
+  title, price, printPrice,
   img, technique, size, paintingId,
   printSize, paypal
 }) => {
@@ -65,14 +65,14 @@ const PaintingCard = ({
                 <section className="section-container">
                   <p className="font-weight-bold">Original</p>
                   <ul>
-                    { price &&  <li>{`Precio: $${price} MXN`}</li>}
+                    { price &&  <li>{`$${price} MXN`}</li>}
                     <li>{technique}</li>
                     { price && <li>{size}</li>}
                     <li>2020</li>
                   </ul>
                   <p className="font-weight-bold">Print</p>
                   <ul>
-                    <li>{`Precio: $${printPrice} MXN`}</li>
+                    <li>{`$${printPrice} MXN`}</li>
                     <li>{printSize}</li>
                   </ul>
                 </section>}

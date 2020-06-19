@@ -68,7 +68,6 @@ const PaintingCard = ({
                     { price &&  <li>{`$${price} MXN`}</li>}
                     <li>{technique}</li>
                     { price && <li>{size}</li>}
-                    <li>2020</li>
                   </ul>
                   <p className="font-weight-bold">Print</p>
                   <ul>
